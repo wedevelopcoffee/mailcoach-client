@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "wedevelopcoffee/mailcoach-client",
+    "description": "Provides a simple-to-use client to communicate with Mailcoach.",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "wedevelopcoffee",
+        "mailcoach-client"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/wedevelopcoffee/mailcoach-client",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Daniel Koop",
+            "email": "daniel@wedevelop.coffee",
             "role": "Developer"
         }
     ],
@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "WeDevelopCoffee\\MailcoachClient\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "WeDevelopCoffee\\MailcoachClient\\Tests\\": "tests"
         }
     },
     "scripts": {

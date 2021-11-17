@@ -1,8 +1,8 @@
-# :package_description
+# Provides a simple-to-use client to communicate with Mailcoach.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![Tests](https://github.com/:vendor_slug/:package_slug/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/:vendor_slug/:package_slug/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/wedevelopcoffee/mailcoach-client.svg?style=flat-square)](https://packagist.org/packages/wedevelopcoffee/mailcoach-client)
+[![Tests](https://github.com/wedevelopcoffee/mailcoach-client/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/wedevelopcoffee/mailcoach-client/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/wedevelopcoffee/mailcoach-client.svg?style=flat-square)](https://packagist.org/packages/wedevelopcoffee/mailcoach-client)
 
 ---
 This package can be used as to scaffold a framework agnostic package. Follow these steps to get started:
@@ -15,27 +15,19 @@ This package can be used as to scaffold a framework agnostic package. Follow the
 
 This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
 
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
-
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require wedevelopcoffee/mailcoach-client
 ```
 
 ## Usage
 
 ```php
-$skeleton = new VendorName\Skeleton();
-echo $skeleton->echoPhrase('Hello, VendorName!');
+$skeleton = new WeDevelopCoffee\MailcoachClient();
+echo $skeleton->echoPhrase('Hello, WeDevelopCoffee!');
 ```
 
 ## Testing
@@ -58,7 +50,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Daniel Koop](https://github.com/mrkoopie)
 - [All Contributors](../../contributors)
 
 ## License

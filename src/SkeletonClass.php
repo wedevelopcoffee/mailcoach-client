@@ -1,7 +1,7 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace WeDevelopCoffee\MailcoachClient;
 
-class SkeletonClass
+class MailcoachClientClass
 {
 }
