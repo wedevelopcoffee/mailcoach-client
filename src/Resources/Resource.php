@@ -6,7 +6,7 @@ class Resource
 {
     protected $mailcoach;
 
-    public function __construct($mailcoach, $data = [])
+    public function __construct($mailcoach = null, $data = [])
     {
         $this->mailcoach = $mailcoach;
 

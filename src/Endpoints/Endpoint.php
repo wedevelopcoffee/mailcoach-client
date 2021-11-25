@@ -52,7 +52,7 @@ class Endpoint
 
     public function makeRequestWithLink($link)
     {
-        if (! isset($this->response['links'][$link]) || empty($this->response['links'][$link])) {
+        if (!isset($this->response['links'][$link]) || empty($this->response['links'][$link])) {
             return [];
         }
 
@@ -81,23 +81,20 @@ class Endpoint
         $this->mailcoach->api->setFilters($this->filters);
         $this->response = $this->mailcoach->api->get($endpoint);
 
-        if (empty($this->response['data'])) {
-            // There is no data.
-            return [];
-        }
-
-        // Store the response
-        foreach ($this->response['data'] as $object) {
-            $this->data[] = $this->createResource($object);
-        }
-
-        return $this->data;
+        return $this->parseResponse();
     }
 
-    public function post($data)
+    /**
+     * Send a post.
+     * @param $data
+     * @return array
+     */
+    public function create($data)
     {
-        // @todo
-        //$this->api->post('email-lists/' . $listId . '/subscribers', $data);
+        $postData = $this->getPostDataFromResource($data);
+        $this->response = $this->mailcoach->api->post($this->getEndpoint(), $postData);
+
+        return $this->parseResponse();
     }
 
     /**
@@ -106,7 +103,7 @@ class Endpoint
      */
     public function getEndpoint()
     {
-        if (! empty($this->id)) {
+        if (!empty($this->id)) {
             $endpoint = str_replace('{id}', $this->id, $this->endpoint);
         } else {
             $endpoint = $this->endpoint;
@@ -152,5 +149,59 @@ class Endpoint
         $this->filters[$key] = $data;
 
         return $this;
+    }
+
+    /**
+     * Convert a resource to an array.
+     * @param $data
+     * @return array
+     */
+    protected function getPostDataFromResource($data)
+    {
+        $object = clone $data;
+        $ignorePostFields = $object->ignore_post_fields;
+        $ignorePostFields[] = 'ignorePostFields';
+        $ignorePostFields[] = 'mailcoach';
+
+        $objectVars = get_object_vars($data);
+        $postData = [];
+
+        foreach ($objectVars as $tmpVar => $value) {
+            // Ignore fields
+            if (in_array($tmpVar, $ignorePostFields)) {
+                continue;
+            }
+
+            if (empty($value)) {
+                continue;
+            }
+
+            $postData [$tmpVar] = $value;
+        }
+
+        return $postData;
+    }
+
+    /**
+     * @return array
+     */
+    protected function parseResponse(): mixed
+    {
+        if (empty($this->response['data'])) {
+            // There is no data.
+            return [];
+        }
+
+        // A single record is returned.
+        if (isset($this->response['data']['id'])) {
+            return $this->createResource($this->response['data']);
+        }
+
+        // Store the response
+        foreach ($this->response['data'] as $object) {
+            $this->data[] = $this->createResource($object);
+        }
+
+        return $this->data;
     }
 }

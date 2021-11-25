@@ -75,4 +75,17 @@ class Subscriber extends Resource
      * @var string
      */
     public $updated_at;
+
+    /**
+     * @var array[]
+     */
+    public $ignore_post_fields = [
+        'id',
+        'email_list_id',
+        'extra_attributes',
+        'uuid',
+        'subscribed_at',
+        'unsubscribed_at',
+        'created_at',
+        'updated_at'];
 }
