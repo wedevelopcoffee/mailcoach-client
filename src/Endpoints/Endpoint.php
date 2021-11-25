@@ -52,7 +52,7 @@ class Endpoint
 
     public function makeRequestWithLink($link)
     {
-        if (!isset($this->response['links'][$link]) || empty($this->response['links'][$link])) {
+        if (! isset($this->response['links'][$link]) || empty($this->response['links'][$link])) {
             return [];
         }
 
@@ -103,7 +103,7 @@ class Endpoint
      */
     public function getEndpoint()
     {
-        if (!empty($this->id)) {
+        if (! empty($this->id)) {
             $endpoint = str_replace('{id}', $this->id, $this->endpoint);
         } else {
             $endpoint = $this->endpoint;
